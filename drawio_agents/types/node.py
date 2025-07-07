@@ -23,6 +23,7 @@ class Node(pydantic.BaseModel):
 
     id: str = pydantic.Field(default_factory=lambda: secrets.token_urlsafe(16))
     value: str = ""
+    parent: str | None = None
     vertex: typing.Literal["1"] = "1"
 
     @classmethod
@@ -58,6 +59,9 @@ class Node(pydantic.BaseModel):
 
             if _vertex := str_or_none(cell.get("vertex", None)):
                 _node_data["vertex"] = _vertex
+
+            if _parent := str_or_none(cell.get("parent", None)):
+                _node_data["parent"] = _parent
 
             try:
                 nodes.append(cls.model_validate(_node_data))
