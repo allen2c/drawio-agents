@@ -37,6 +37,7 @@ class Node(pydantic.BaseModel):
         from str_or_none import str_or_none
 
         from drawio_agents.utils.clean_might_xml_value import clean_might_xml_value
+        from drawio_agents.utils.parse_markdown import parse_markdown
 
         parser = parser or ET.XMLParser()
         root = ET.fromstring(xml_content, parser)
@@ -52,6 +53,7 @@ class Node(pydantic.BaseModel):
 
             if _value := str_or_none(cell.get("value", None)):
                 _clean_value = clean_might_xml_value(_value, parser=parser)
+                _value_metadata, _clean_value = parse_markdown(_clean_value)
                 _node_data["value"] = _clean_value
 
             if _vertex := str_or_none(cell.get("vertex", None)):
