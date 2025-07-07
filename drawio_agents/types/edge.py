@@ -1,6 +1,7 @@
-import pydantic
 import secrets
 import typing
+
+import pydantic
 
 
 class Edge(pydantic.BaseModel):
