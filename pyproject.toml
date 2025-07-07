@@ -2,6 +2,7 @@
 authors = [{ name = "Allen Chou", email = "f1470891079@gmail.com" }]
 dependencies = [
     "lxml (>=6.0.0,<7.0.0)",
+    "networkx (>=3.0.0,<4.0.0)",
     "pydantic (>=2,<3.0.0)",
     "pydantic-settings (>=2,<3.0.0)",
     "python-frontmatter (>=1.0.0,<2.0.0)",
